@@ -9,8 +9,9 @@
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "allowJs": true,
     "sourceMap": true,
-    "baseUrl": ".",
+    "baseUrl": "src",
     "types": [
       "node",
       "jest"

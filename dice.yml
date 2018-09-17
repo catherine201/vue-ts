@@ -1,0 +1,37 @@
+name: mobile #项目名称
+description: itproject project for exhibition #项目描述
+keywords:
+  - productivity #关键字
+  - HTML5
+  - scalpel
+website: http://www.evergrande.com/  #不需要改
+repository: http://gittar.eaftest.evergrande.com/evergrande-train/train-front-end #代码的仓库，
+logo: https://small-sharp-tool.com/logo.svg #（非关键元素）
+
+scripts:
+  before-deploy:
+    - pampas setup
+    - pampas migrate
+  post-deploy:
+    - pampas clean
+
+endpoints:
+  mobile: #项目名称
+    ports:
+     - 80 #项目端口 不建议修改
+    scale: 1 #实例个数
+    resources:
+      cpus: 0.5 #cpu资源，一般参考小于1
+      mem: 382 #内存资源，一般参考值382
+      disk: 512 #硬盘资源，一般参考512
+    buildpack:
+      bp_repo: http://git.terminus.io/buildpacks/dice-bpack-termspa.git
+      bp_ver: feature/publicdir
+      bp_args:
+        - PUBLIC_DIR=dist
+
+global_env:
+
+addons:
+  monitor:
+    plan: monitor:standard #添加监控插件
