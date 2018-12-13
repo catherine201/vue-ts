@@ -2,7 +2,7 @@
   <div class="about">
 <div class="wrapper">
   <ul class="content">
-    <li v-for="(item, index) in arr" :key="index">{{item}}</li>
+    <li v-for="(item, index) in arr" :key="index" @click="toDetail">{{item}}</li>
   </ul>
   <!-- 这里可以放一些其它的 DOM，但不会影响滚动 -->
 </div>
@@ -30,6 +30,11 @@ export default class Home extends Vue {
   private pageNo: number = 0;
   private loading: boolean = false;
   private loadingOver: boolean = false;
+  private data() {
+    return {
+      loadingOver: false,
+    };
+  }
   // computed
   @Prop({default: '默认值'}) private propB!: string;
   constructor() {
@@ -48,6 +53,9 @@ export default class Home extends Vue {
     this._houseScroll();
       // console.log(this);
     // }, 50);
+  }
+  public toDetail(): void {
+    this.$router.push('/detail')
   }
   public _houseScroll() {
     console.log(houseScroll);
@@ -103,8 +111,16 @@ p{
   font-size: .21rem;
 }
 .wrapper{
-  height: 5rem;
+  width: 100%;
+  height: 100%;
   overflow-y: hidden;
+  background: lightcoral;
+  li{
+    list-style: none;
+    height: 0.4rem;
+    line-height: 0.4rem;
+    border-bottom: 1px solid #333;
+  }
 }
 </style>
 

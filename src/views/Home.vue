@@ -4,7 +4,8 @@
     <p>{{hello}}</p>
     <p> {{propB}}</p>
     <p>{{count}}</p> -->
-    <img v-lazy="imgUrl" alt="">
+    
+<input type="tel" v-model="tel">
     <HelloWorld msg="你好" @reset="handleReset"/>
     <v-touch v-on:swipeleft="onSwipeLeft()">Swipe me!</v-touch>
   </div>
@@ -27,6 +28,7 @@ export default class Home extends Vue {
     return `count${this.hello}`;
   }
   private hello: string = '你好';
+  private tel = '';
   private imgUrl = require('../assets/images/mouse.jpg');
   // http://lensbuyersguide.com/gallery/219/2/23_iso100_14mm.jpg
   @Prop({default: '默认值'}) private propB!: string;
@@ -67,5 +69,10 @@ this.greet();
 <style scoped lang="less">
 p{
   font-size: .21rem;
+}
+.home{
+  width: 100%;
+  height: 100%;
+  background: palegreen;
 }
 </style>

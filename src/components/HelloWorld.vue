@@ -17,6 +17,7 @@ export default class HelloWorld extends Vue {
   @Emit('reset')
   public resetCount(h: string) {
     this.hello = this.msg;
+    this.$router.push('/capture')
   }
 }
 </script>
